@@ -1,2 +1,2 @@
 # docker-centos6
-An update CentOS 6 installation.
+An updated CentOS 6 installation.
