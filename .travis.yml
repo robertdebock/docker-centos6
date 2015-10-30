@@ -1,0 +1,15 @@
+sudo: required
+
+services:
+- docker
+
+script:
+- docker build -t robertdebock:docker-centos6 .
+- docker images
+- docker tag $(docker images | awk '$2 == "docker-centos6" { print $3 }') robertdebock/docker-centos6
+- docker images
+- docker login -e="$DOCKEREMAIL" -u="$DOCKERUSERNAME" -p="$DOCKERPASSWORD"
+- docker push robertdebock/docker-centos6
+
+notifications:
+  email: false
